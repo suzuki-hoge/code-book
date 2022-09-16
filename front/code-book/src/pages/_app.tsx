@@ -1,5 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { ThemeProvider } from 'styled-components'
+import { theme } from '../themes'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:locale" content="ja_JP" />
         <meta property="og:type" content="website" />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }

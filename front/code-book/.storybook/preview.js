@@ -11,6 +11,15 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: "dark",
+    values: [
+      {
+        name: "dark",
+        value: "#efe",
+      },
+    ],
+  },
 }
 
 export const GlobalStyle = createGlobalStyle`

@@ -1,6 +1,10 @@
 const colors = {
-  primary: '#3f51b5',
-  secondary: '#f50057',
+  background: '#dfd',
+  content: '#fff',
+  highlight: '#f4f4f4',
+  primary: '#afa',
+  sub: '#f4f4f4',
+  caution: '#faa',
 }
 
 export default colors
