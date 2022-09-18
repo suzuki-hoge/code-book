@@ -3,6 +3,10 @@ import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../themes'
 
+import './style.css'
+import '../components/organisms/Header/font.css'
+import '../components/atoms/CodeBlock/codeblock.css'
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

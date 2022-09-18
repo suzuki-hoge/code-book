@@ -1,0 +1,6 @@
+.code-book-code-block pre {
+    margin: 1em 0 0 0 !important;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

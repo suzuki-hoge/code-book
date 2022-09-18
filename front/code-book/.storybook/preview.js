@@ -12,11 +12,15 @@ export const parameters = {
     },
   },
   backgrounds: {
-    default: "dark",
+    default: "codebook",
     values: [
       {
-        name: "dark",
+        name: "codebook",
         value: "#efe",
+      },
+      {
+        name: "dark",
+        value: "#eee",
       },
     ],
   },
