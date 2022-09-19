@@ -26,7 +26,7 @@ export const BookDetail = ({ book }: Props) => {
   return (
     <>
       <Div>
-        <BookHeader book={book} variant={'medium'} />
+        <BookHeader book={book} link={false} variant={'medium'} />
       </Div>
 
       <VerticalItems>
@@ -36,7 +36,7 @@ export const BookDetail = ({ book }: Props) => {
 
         {book.codes.map((code) => (
           <ContentDiv key={code.id}>
-            <CodeHeader key={code.id} code={code} variant={'small'} />
+            <CodeHeader key={code.id} code={code} link={true} variant={'small'} />
           </ContentDiv>
         ))}
       </VerticalItems>

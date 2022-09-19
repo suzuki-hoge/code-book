@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { User } from '../../../types/user'
@@ -29,9 +30,18 @@ const HeaderContentArea = styled.div`
   padding-bottom: 1em;
 `
 
+const A = styled.a`
+  cursor: pointer;
+  color: black;
+
+  &:visited {
+    color: black;
+  }
+`
+
 const Content = styled.div`
   background-color: ${(props) => props.theme.colors.background};
-  padding-top: 1em;
+  padding: 1em 0;
   margin: 0;
 
   @media ${device.pc} {
@@ -51,7 +61,11 @@ export const Frame = ({ user, children }: Props) => {
     <>
       <HeaderArea>
         <HeaderContentArea>
-          <Header user={user} />
+          <Link href="/">
+            <A>
+              <Header user={user} />
+            </A>
+          </Link>
         </HeaderContentArea>
       </HeaderArea>
 

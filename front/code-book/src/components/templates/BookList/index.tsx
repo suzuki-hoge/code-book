@@ -13,7 +13,7 @@ export const BookList = ({ books }: Props) => {
       <VerticalItems>
         {books.map((book) => (
           <ContentDiv key={book.id}>
-            <BookHeader key={book.id} book={book} variant={'small'} />
+            <BookHeader key={book.id} book={book} link={true} variant={'small'} />
           </ContentDiv>
         ))}
       </VerticalItems>

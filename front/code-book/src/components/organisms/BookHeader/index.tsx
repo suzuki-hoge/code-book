@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import { theme } from '../../../themes'
 import { Book } from '../../../types/book'
@@ -10,6 +11,7 @@ import { IconText } from '../../molecules/IconText'
 type Props = {
   book: Book
 
+  link: boolean
   variant: 'small' | 'medium'
 }
 
@@ -32,7 +34,7 @@ const Title = styled.div<{ variant: 'small' | 'medium' }>`
   font-weight: bold;
 `
 
-export const BookHeader = ({ book, variant }: Props) => {
+export const BookHeader = ({ book, link, variant }: Props) => {
   return (
     <>
       <HeaderItem>
@@ -43,7 +45,16 @@ export const BookHeader = ({ book, variant }: Props) => {
       <HorizonItems>
         <Emoji variant={variant}>{book.emoji}</Emoji>
         <div>
-          <Title variant={variant}>{book.title}</Title>
+          {link ? (
+            <Link href={`/books/${book.id}`}>
+              <a>
+                <Title variant={variant}>{book.title}</Title>
+              </a>
+            </Link>
+          ) : (
+            <Title variant={variant}>{book.title}</Title>
+          )}
+
           <HorizonItems>
             {book.tags.map((tag) => (
               <Icon key={tag.name} icon={tag.icon} variant={variant} />

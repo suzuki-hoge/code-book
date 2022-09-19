@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import { theme } from '../../../themes'
 import { Code } from '../../../types/code'
@@ -10,6 +11,7 @@ import { IconText } from '../../molecules/IconText'
 type Props = {
   code: Code
 
+  link: boolean
   variant: 'small' | 'medium'
 }
 
@@ -23,7 +25,7 @@ const Title = styled.div<{ variant: 'small' | 'medium' }>`
   font-weight: bold;
 `
 
-export const CodeHeader = ({ code, variant }: Props) => {
+export const CodeHeader = ({ code, link, variant }: Props) => {
   return (
     <>
       <HeaderItem>
@@ -32,7 +34,16 @@ export const CodeHeader = ({ code, variant }: Props) => {
       </HeaderItem>
 
       <div>
-        <Title variant={variant}>{code.title}</Title>
+        {link ? (
+          <Link href={`/codes/${code.id}`}>
+            <a>
+              <Title variant={variant}>{code.title}</Title>
+            </a>
+          </Link>
+        ) : (
+          <Title variant={variant}>{code.title}</Title>
+        )}
+
         <HorizonItems>
           {code.tags.map((tag) => (
             <Icon key={tag.name} icon={tag.icon} variant={variant} />

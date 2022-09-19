@@ -40,7 +40,7 @@ export const CodeDetail = ({ code }: Props) => {
   return (
     <>
       <Div>
-        <CodeHeader code={code} variant={'medium'} />
+        <CodeHeader code={code} link={false} variant={'medium'} />
       </Div>
 
       <VerticalItems>

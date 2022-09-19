@@ -1,15 +1,5 @@
-import type { NextPage } from 'next'
-import { CodeDetail } from '../components/templates/CodeDetail'
-import { Frame } from '../components/templates/Frame'
-import { fileCode } from '../types/fixture/code'
-import { cat } from '../types/fixture/user'
+import Page from './books'
 
-const Home: NextPage = () => {
-  return (
-    <Frame user={cat}>
-      <CodeDetail code={fileCode} />
-    </Frame>
-  )
-}
+const Home = Page
 
 export default Home
