@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { User } from '../../../types/user'
+import { device } from '../../device'
 import { Header } from '../../organisms/Header'
 
 type Props = {
@@ -8,41 +9,55 @@ type Props = {
   children: ReactNode
 }
 
-const Content = styled.div`
-  background-color: ${(props) => props.theme.colors.background};
-  margin: 0;
-  padding-bottom: 1em;
-`
-
 const HeaderArea = styled.div`
-  width: 100%;
-  background-color: ${(props) => props.theme.colors.content};
-  padding: 1em 0;
+  margin: 0;
+  padding-top: 1em;
+
+  @media ${device.sp} {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  @media ${device.pc} {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 `
 
 const HeaderContentArea = styled.div`
-  max-width: 840px;
-  //background-color: ${(props) => props.theme.colors.content};
+  max-width: 880px;
   margin: 0 auto;
-  padding: 0 1em;
+  padding-bottom: 1em;
+`
+
+const Content = styled.div`
+  background-color: ${(props) => props.theme.colors.background};
+  padding-top: 1em;
+  margin: 0;
+
+  @media ${device.pc} {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 `
 
 const MainContent = styled.div`
-  max-width: 720px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 1em 0;
 `
 
 export const Frame = ({ user, children }: Props) => {
   return (
-    <Content>
+    <>
       <HeaderArea>
         <HeaderContentArea>
           <Header user={user} />
         </HeaderContentArea>
       </HeaderArea>
 
-      <MainContent>{children}</MainContent>
-    </Content>
+      <Content>
+        <MainContent>{children}</MainContent>
+      </Content>
+    </>
   )
 }

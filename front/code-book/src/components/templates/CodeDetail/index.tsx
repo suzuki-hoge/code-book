@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Code } from '../../../types/code'
+import { device } from '../../device'
 import { ContentDiv } from '../../molecules/ContentDiv'
 import { VerticalItems } from '../../molecules/VerticalItems'
 import { CodeHeader } from '../../organisms/CodeHeader'
@@ -14,6 +15,10 @@ type Props = {
 
 const Div = styled.div`
   margin-bottom: 1.5em;
+
+  @media ${device.sp} {
+    padding: 0 1em;
+  }
 `
 
 const Line = styled.hr`

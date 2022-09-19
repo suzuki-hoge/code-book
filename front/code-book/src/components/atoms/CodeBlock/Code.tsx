@@ -11,13 +11,14 @@ const CodeBlockWrapper = styled.div`
 const CodeBlockTitle = styled.div`
   display: inline-block;
   position: absolute;
-  top: -1.8em;
+  //width: 100%;
   left: 0;
-  background-color: #2d2d2d;
-  padding: 0.2em 1em;
+  font-size: 1.2em;
   color: #fff;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  background-color: #888;
+  //border-top-right-radius: 8px;
+  border-top-left-radius: 6px;
+  padding: 0 0.5em;
 `
 
 export const Code: CodeComponent = ({ className, children }: CodeProps) => {
@@ -29,7 +30,7 @@ export const Code: CodeComponent = ({ className, children }: CodeProps) => {
     <CodeBlockWrapper>
       <CodeBlockTitle>{name}</CodeBlockTitle>
       <SyntaxHighlighter style={tomorrow} language={lang}>
-        {String(children).trim()}
+        {'\n' + String(children).trim()}
       </SyntaxHighlighter>
     </CodeBlockWrapper>
   )
