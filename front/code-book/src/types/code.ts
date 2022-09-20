@@ -5,7 +5,7 @@ import { User } from './user'
 export type Code = FileCode | UrlCode | SnippetCode
 
 type CodeBase = {
-  id: number
+  id: string
   title: string
   author: User
   created: Date

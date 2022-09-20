@@ -3,7 +3,7 @@ import { Tag } from './tag'
 import { User } from './user'
 
 export type Book = {
-  id: number
+  id: string
   emoji: string
   title: string
   description: string

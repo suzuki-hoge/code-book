@@ -11,12 +11,10 @@ const CodeBlockWrapper = styled.div`
 const CodeBlockTitle = styled.div`
   display: inline-block;
   position: absolute;
-  //width: 100%;
   left: 0;
   font-size: 1.2em;
   color: #fff;
   background-color: #888;
-  //border-top-right-radius: 8px;
   border-top-left-radius: 6px;
   padding: 0 0.5em;
 `

@@ -2,14 +2,14 @@ import { Comment } from '../comment'
 import { cat } from './user'
 
 export const singleLineComment: Comment = {
-  id: 1,
+  id: '11111111-1111-4111-a111-111111111111',
   body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   author: cat,
   created: new Date(2022, 9, 1, 12, 34, 56),
 }
 
 export const multiLineComment: Comment = {
-  id: 2,
+  id: '22222222-2222-4222-a222-222222222222',
   body: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
 do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 

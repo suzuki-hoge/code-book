@@ -43,6 +43,7 @@ const Content = styled.div`
   background-color: ${(props) => props.theme.colors.background};
   padding: 1em 0;
   margin: 0;
+  min-height: calc(100vh - 72px - 2em);
 
   @media ${device.pc} {
     padding-left: 40px;
@@ -53,13 +54,13 @@ const Content = styled.div`
 const MainContent = styled.div`
   max-width: 880px;
   margin: 0 auto;
-  padding: 1em 0;
+  padding: 1em 0 4em 0;
 `
 
 export const Frame = ({ user, children }: Props) => {
   return (
     <>
-      <HeaderArea>
+      <HeaderArea id="header-area">
         <HeaderContentArea>
           <Link href="/">
             <A>

@@ -1,14 +1,14 @@
 import { FileCode, SnippetCode, UrlCode } from '../code'
 import { multiLineComment, singleLineComment } from './comment'
-import { scala } from './tag'
+import { scala1, scala2, scala3 } from './tag'
 import { cat } from './user'
 
 export const fileCode: FileCode = {
-  id: 1,
+  id: '11111111-1111-4111-9111-111111111111',
   title: 'アコーディオンの実装例',
   author: cat,
   created: new Date(2022, 9, 1, 12, 34, 56),
-  tags: [scala, scala],
+  tags: [scala1, scala2],
   comments: [singleLineComment, multiLineComment],
   kind: 'file',
   files: [
@@ -73,18 +73,18 @@ section {
 }
 
 export const urlCode: UrlCode = {
-  id: 2,
+  id: '22222222-2222-4222-9222-222222222222',
   title: 'YouTube の埋め込み',
   author: cat,
   created: new Date(2022, 9, 1, 12, 34, 56),
-  tags: [scala, scala, scala],
+  tags: [scala1, scala2, scala3],
   comments: [],
   kind: 'url',
   url: 'https://codepen.io/scottshefler/pen/XdGbQZ?editors=1111',
 }
 
 export const snippetCode: SnippetCode = {
-  id: 3,
+  id: '33333333-3333-4333-9333-333333333333',
   title: 'テストデータを消すクエリ',
   author: cat,
   created: new Date(2022, 9, 1, 12, 34, 56),
