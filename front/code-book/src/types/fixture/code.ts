@@ -1,12 +1,12 @@
 import { FileCode, SnippetCode, UrlCode } from '../code'
 import { multiLineComment, singleLineComment } from './comment'
 import { scala1, scala2, scala3 } from './tag'
-import { cat } from './user'
+import { dog, flog, rabbit } from './user'
 
 export const fileCode: FileCode = {
   id: '11111111-1111-4111-9111-111111111111',
   title: 'アコーディオンの実装例',
-  author: cat,
+  author: dog,
   created: new Date(2022, 9, 1, 12, 34, 56),
   tags: [scala1, scala2],
   comments: [singleLineComment, multiLineComment],
@@ -75,7 +75,7 @@ section {
 export const urlCode: UrlCode = {
   id: '22222222-2222-4222-9222-222222222222',
   title: 'YouTube の埋め込み',
-  author: cat,
+  author: rabbit,
   created: new Date(2022, 9, 1, 12, 34, 56),
   tags: [scala1, scala2, scala3],
   comments: [],
@@ -86,7 +86,7 @@ export const urlCode: UrlCode = {
 export const snippetCode: SnippetCode = {
   id: '33333333-3333-4333-9333-333333333333',
   title: 'テストデータを消すクエリ',
-  author: cat,
+  author: flog,
   created: new Date(2022, 9, 1, 12, 34, 56),
   tags: [],
   comments: [multiLineComment],

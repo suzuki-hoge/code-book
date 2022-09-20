@@ -1,14 +1,16 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CodeForm } from '../../components/organisms/code/CodeForm'
 import { FootSlider } from '../../components/templates/FootSlider'
 import { Frame } from '../../components/templates/Frame'
 import { BookDetail } from '../../components/templates/book/BookDetail'
 import { Book } from '../../types/book'
 import { fullBook1, fullBook2 } from '../../types/fixture/book'
-import { cat } from '../../types/fixture/user'
+import { UserContext } from '../_app'
 
 const Page = () => {
+  const user = useContext(UserContext)
+
   const bookId = useRouter().query.id as string
   const [book, setBook] = useState<Book>()
 
@@ -22,10 +24,10 @@ const Page = () => {
   }, [bookId])
 
   return (
-    <Frame user={cat}>
+    <Frame user={user}>
       {book && <BookDetail book={book} />}
       <FootSlider title="New Code">
-        <CodeForm user={cat} bookId={bookId} />
+        <CodeForm user={user} bookId={bookId} />
       </FootSlider>
     </Frame>
   )

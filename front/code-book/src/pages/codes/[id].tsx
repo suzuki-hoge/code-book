@@ -1,14 +1,16 @@
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { CommentForm } from '../../components/organisms/comment/CommentForm'
 import { FootSlider } from '../../components/templates/FootSlider'
 import { Frame } from '../../components/templates/Frame'
 import { CodeDetail } from '../../components/templates/code/CodeDetail'
 import { Code } from '../../types/code'
 import { fileCode, snippetCode, urlCode } from '../../types/fixture/code'
-import { cat } from '../../types/fixture/user'
+import { UserContext } from '../_app'
 
 const Page = () => {
+  const user = useContext(UserContext)
+
   const codeId = useRouter().query.id as string
   const [code, setCode] = useState<Code>()
 
@@ -25,10 +27,10 @@ const Page = () => {
   }, [codeId])
 
   return (
-    <Frame user={cat}>
+    <Frame user={user}>
       {code && <CodeDetail code={code} />}
       <FootSlider title="New Comment">
-        <CommentForm user={cat} codeId={codeId} />
+        <CommentForm user={user} codeId={codeId} />
       </FootSlider>
     </Frame>
   )
