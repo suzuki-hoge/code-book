@@ -79,7 +79,13 @@ public class CodePart {
         } else {
             return Map.of(
                 "kind", kind,
-                "file", Map.of("name", val0, "text", val1)
+                "file", Map.of("name", val0, "text", val1),
+                "variables", Stream.of(
+                    Map.of("name", val2, "value", val3),
+                    Map.of("name", val4, "value", val5),
+                    Map.of("name", val6, "value", val7),
+                    Map.of("name", val8, "value", val9)
+                ).filter(m -> !m.get("name").equals("")).collect(Collectors.toList())
             );
         }
     }

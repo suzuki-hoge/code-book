@@ -5,7 +5,7 @@ export const singleLineComment: Comment = {
   id: '11111111-1111-4111-a111-111111111111',
   body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   author: fish,
-  created: new Date(2022, 9, 1, 12, 34, 56),
+  created: '2022/09/01 12:34:56',
 }
 
 export const multiLineComment: Comment = {
@@ -22,5 +22,5 @@ esse cillum dolore eu fugiat nulla pariatur.
 Excepteur sint occaecat cupidatat non proident,
 sunt in culpa qui officia deserunt mollit anim id est laborum.`,
   author: penguin,
-  created: new Date(2022, 9, 1, 12, 34, 56),
+  created: '2022/09/01 12:34:56',
 }

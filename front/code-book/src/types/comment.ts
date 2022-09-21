@@ -4,5 +4,5 @@ export type Comment = {
   id: string
   body: string
   author: User
-  created: Date
+  created: string
 }

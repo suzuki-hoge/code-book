@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
@@ -15,6 +16,8 @@ export const UserContext = React.createContext<User>(dog)
 function MyApp({ Component, pageProps }: AppProps) {
   const loginUser = [cat, dog, rabbit, flog, fish, penguin][Math.floor(Math.random() * 6)]
 
+  const queryClient = new QueryClient()
+
   return (
     <>
       <Head>
@@ -29,7 +32,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <UserContext.Provider value={loginUser}>
-          <Component {...pageProps} />
+          <QueryClientProvider client={queryClient}>
+            <Component {...pageProps} />
+          </QueryClientProvider>
         </UserContext.Provider>
       </ThemeProvider>
     </>

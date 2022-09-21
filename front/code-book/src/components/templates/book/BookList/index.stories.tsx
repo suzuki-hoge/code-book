@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { fullBook1 } from '../../../../types/fixture/book'
+import { fullBook } from '../../../../types/fixture/book'
 import { BookList } from './index'
 
 export default {
@@ -11,5 +11,5 @@ const Template: ComponentStory<typeof BookList> = (args) => <BookList {...args} 
 
 export const Standard = Template.bind({})
 Standard.args = {
-  books: [fullBook1, fullBook1, fullBook1, fullBook1],
+  books: [fullBook],
 }

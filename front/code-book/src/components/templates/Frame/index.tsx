@@ -1,12 +1,11 @@
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, useContext } from 'react'
 import styled from 'styled-components'
-import { User } from '../../../types/user'
+import { UserContext } from '../../../pages/_app'
 import { device } from '../../device'
 import { Header } from '../../organisms/Header'
 
 type Props = {
-  user: User
   children: ReactNode
 }
 
@@ -57,7 +56,9 @@ const MainContent = styled.div`
   padding: 1em 0 4em 0;
 `
 
-export const Frame = ({ user, children }: Props) => {
+export const Frame = ({ children }: Props) => {
+  const user = useContext(UserContext)
+
   return (
     <>
       <HeaderArea id="header-area">

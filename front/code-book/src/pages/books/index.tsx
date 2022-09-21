@@ -1,29 +1,28 @@
-import { useContext, useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 import { BookForm } from '../../components/organisms/book/BookForm'
 import { FootSlider } from '../../components/templates/FootSlider'
 import { Frame } from '../../components/templates/Frame'
 import { BookList } from '../../components/templates/book/BookList'
-import { Book } from '../../types/book'
-import { fullBook1, fullBook2 } from '../../types/fixture/book'
-import { UserContext } from '../_app'
+import { BookFindAllResponse } from '../api/books/findAll'
 
 const Page = () => {
-  const user = useContext(UserContext)
+  const { status, data } = useQuery([], async () => (await axios.get<BookFindAllResponse>('/api/books/findAll')).data)
 
-  const [books, setBooks] = useState<Book[]>([])
+  if (status == 'loading') {
+    return <p>Loading...</p>
+  }
 
-  useEffect(() => {
-    setBooks([fullBook1, fullBook2])
-  }, [])
-
-  return (
-    <Frame user={user}>
-      <BookList books={books} />
-      <FootSlider title="New Book">
-        <BookForm user={user} />
-      </FootSlider>
-    </Frame>
-  )
+  if (status == 'success') {
+    return (
+      <Frame>
+        <BookList books={data.books} />
+        <FootSlider title="New Book">
+          <BookForm />
+        </FootSlider>
+      </Frame>
+    )
+  }
 }
 
 export default Page

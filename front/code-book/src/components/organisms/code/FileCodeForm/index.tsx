@@ -1,13 +1,12 @@
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
-import { User } from '../../../../types/user'
+import { UserContext } from '../../../../pages/_app'
 import { Button } from '../../../atoms/Button'
 import { HorizonItems } from '../../../molecules/HorizonItems'
 import { VerticalItems } from '../../../molecules/VerticalItems'
 
 type Props = {
-  user: User
   bookId: string
 }
 
@@ -33,8 +32,10 @@ const ButtonArea = styled.div`
   position: relative;
 `
 
-export const FileCodeForm = ({ user }: Props) => {
+export const FileCodeForm = ({ bookId }: Props) => {
   const router = useRouter()
+
+  const user = useContext(UserContext)
 
   const [title, setTitle] = useState('')
   const [files, setFiles] = useState<{ name: string; text: string }[]>([{ name: '', text: '' }])

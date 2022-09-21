@@ -9,6 +9,7 @@ type Props = {
 const Div = styled.div`
   background-color: ${(props) => props.theme.colors.content};
   padding: 1em;
+  white-space: pre-line;
   @media ${device.pc} {
     border-radius: 8px;
   }

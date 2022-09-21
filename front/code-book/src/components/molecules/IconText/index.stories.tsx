@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { scala1 } from '../../../types/fixture/tag'
+import { scala } from '../../../types/fixture/tag'
 import { cat } from '../../../types/fixture/user'
 import { IconText } from './index'
 
@@ -21,7 +21,7 @@ MediumUser.args = {
 export const SmallTag = Template.bind({})
 SmallTag.args = {
   href: '#',
-  icon: scala1.icon,
-  text: scala1.name,
+  icon: scala.icon,
+  text: scala.name,
   variant: 'small',
 }

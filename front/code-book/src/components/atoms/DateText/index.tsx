@@ -1,9 +1,8 @@
-import { format } from 'date-fns'
 import styled from 'styled-components'
 import { theme } from '../../../themes'
 
 type Props = {
-  date: Date
+  date: string
 
   variant: 'small' | 'medium'
 }
@@ -18,5 +17,5 @@ const Span = styled.span<{ variant: 'small' | 'medium' }>`
 `
 
 export const DateText = ({ date, variant }: Props) => {
-  return <Span variant={variant}>{format(date, 'yyyy/MM/dd hh:mm')}</Span>
+  return <Span variant={variant}>{date}</Span>
 }

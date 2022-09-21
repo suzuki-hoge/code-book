@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { fullBook1 } from '../../../../types/fixture/book'
+import { fullBook } from '../../../../types/fixture/book'
 import { BookHeader } from './index'
 
 export default {
@@ -11,12 +11,12 @@ const Template: ComponentStory<typeof BookHeader> = (args) => <BookHeader {...ar
 
 export const Small = Template.bind({})
 Small.args = {
-  book: fullBook1,
+  book: fullBook,
   variant: 'small',
 }
 
 export const Medium = Template.bind({})
 Medium.args = {
-  book: fullBook1,
+  book: fullBook,
   variant: 'medium',
 }

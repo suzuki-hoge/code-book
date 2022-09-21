@@ -17,6 +17,7 @@ const fill = (text: string, variable: Variable) => {
 }
 
 export const SnippetCodeItem = ({ code }: Props) => {
+  console.log(code)
   const initialText = code.variables.reduce(fill, code.file.text)
 
   const [text, setText] = useState(initialText)

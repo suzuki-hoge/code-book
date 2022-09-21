@@ -46,7 +46,7 @@ export const CodeHeader = ({ code, link, variant }: Props) => {
 
         <HorizonItems>
           {code.tags.map((tag) => (
-            <Icon key={tag.id} icon={tag.icon} variant={variant} />
+            <Icon key={tag.name} icon={tag.icon} variant={variant} />
           ))}
         </HorizonItems>
       </div>

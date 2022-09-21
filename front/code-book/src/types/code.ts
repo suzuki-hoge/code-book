@@ -8,7 +8,7 @@ type CodeBase = {
   id: string
   title: string
   author: User
-  created: Date
+  created: string
   tags: Tag[]
   comments: Comment[]
 }

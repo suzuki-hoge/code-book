@@ -9,6 +9,6 @@ export type Book = {
   description: string
   author: User
   tags: Tag[]
-  created: Date
+  created: string
   codes: Code[]
 }

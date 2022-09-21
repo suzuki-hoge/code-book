@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
 import styled from 'styled-components'
-import { User } from '../../../../types/user'
+import { UserContext } from '../../../../pages/_app'
 import { Button } from '../../../atoms/Button'
 import { VerticalItems } from '../../../molecules/VerticalItems'
 
 type Props = {
-  user: User
   codeId: string
 }
 
@@ -27,8 +27,10 @@ const ButtonArea = styled.div`
   position: relative;
 `
 
-export const CommentForm = ({ user, codeId }: Props) => {
+export const CommentForm = ({ codeId }: Props) => {
   const router = useRouter()
+
+  const user = useContext(UserContext)
 
   return (
     <Div>

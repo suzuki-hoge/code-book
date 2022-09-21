@@ -27,16 +27,14 @@ public class Book {
 
     public Map<String, Object> toMap() {
         return Map.of(
-            "book", Map.of(
-                "id", id,
-                "emoji", emoji,
-                "title", title,
-                "description", description,
-                "author", author.toMap(),
-                "tags", codes.stream().flatMap(c -> c.getPart().getTags().stream()).distinct().collect(Collectors.toList()),
-                "created", created,
-                "codes", codes.stream().map(Code::toMap).collect(Collectors.toList())
-            )
+            "id", id,
+            "emoji", emoji,
+            "title", title,
+            "description", description,
+            "author", author.toMap(),
+            "tags", codes.stream().flatMap(c -> c.getPart().getTags().stream()).distinct().collect(Collectors.toList()),
+            "created", created,
+            "codes", codes.stream().map(Code::toMap).collect(Collectors.toList())
         );
     }
 

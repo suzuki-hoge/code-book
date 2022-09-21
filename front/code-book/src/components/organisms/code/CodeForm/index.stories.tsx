@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { fullBook1 } from '../../../../types/fixture/book'
+import { fullBook } from '../../../../types/fixture/book'
 import { cat } from '../../../../types/fixture/user'
 import { CodeForm } from './index'
 
@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof CodeForm> = (args) => <CodeForm {...args} 
 export const Standard = Template.bind({})
 Standard.args = {
   user: cat,
-  bookId: fullBook1.id,
+  bookId: fullBook.id,
 }

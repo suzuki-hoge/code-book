@@ -1,12 +1,9 @@
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
 import styled from 'styled-components'
-import { User } from '../../../../types/user'
+import { UserContext } from '../../../../pages/_app'
 import { Button } from '../../../atoms/Button'
 import { VerticalItems } from '../../../molecules/VerticalItems'
-
-type Props = {
-  user: User
-}
 
 const Div = styled.div`
   padding: 0.5em 0 1em 0;
@@ -34,8 +31,10 @@ const ButtonArea = styled.div`
   position: relative;
 `
 
-export const BookForm = ({ user }: Props) => {
+export const BookForm = () => {
   const router = useRouter()
+
+  const user = useContext(UserContext)
 
   return (
     <Div>

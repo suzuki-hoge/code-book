@@ -20,7 +20,7 @@ public class CodeService {
 
     CodePartService codePartService;
 
-    public List<Code> findByBookId(String id) {
+    public List<Code> findAllByBookId(String id) {
         List<Map<String, Object>> kvs = template.queryForList(
             "select * from code join users on code.author_id = users.id where book_id = ?",
             id
@@ -36,10 +36,30 @@ public class CodeService {
                     (String) kv.get("icon")
                 ),
                 (String) kv.get("created"),
-                commentService.findByCodeId((String) kv.get("id")),
+                commentService.findAllByCodeId((String) kv.get("id")),
                 codePartService.findByCodeId((String) kv.get("id"))
             )
         ).collect(Collectors.toList());
+    }
+
+    public Code findById(String id) {
+        Map<String, Object> kv = template.queryForMap(
+            "select * from code join users on code.author_id = users.id where code.id = ?",
+            id
+        );
+
+        return new Code(
+            (String) kv.get("id"),
+            (String) kv.get("title"),
+            new User(
+                (String) kv.get("author_id"),
+                (String) kv.get("name"),
+                (String) kv.get("icon")
+            ),
+            (String) kv.get("created"),
+            commentService.findAllByCodeId((String) kv.get("id")),
+            codePartService.findByCodeId((String) kv.get("id"))
+        );
     }
 
 }

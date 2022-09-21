@@ -45,7 +45,7 @@ public class BookService {
                 (String) kv.get("icon")
             ),
             (String) kv.get("created"),
-            codeService.findByBookId((String) kv.get("id"))
+            codeService.findAllByBookId((String) kv.get("id"))
         );
     }
 

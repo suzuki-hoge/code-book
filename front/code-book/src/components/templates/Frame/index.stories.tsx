@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { fileCode } from '../../../types/fixture/code'
 import { cat } from '../../../types/fixture/user'
-import { CodeDetail } from '../CodeDetail'
+import { CodeDetail } from '../code/CodeDetail'
 import { Frame } from './index'
 
 export default {

@@ -57,7 +57,7 @@ export const BookHeader = ({ book, link, variant }: Props) => {
 
           <HorizonItems>
             {book.tags.map((tag) => (
-              <Icon key={tag.id} icon={tag.icon} variant={variant} />
+              <Icon key={tag.name} icon={tag.icon} variant={variant} />
             ))}
           </HorizonItems>
         </div>

@@ -15,9 +15,9 @@ public class CommentService {
 
     JdbcTemplate template;
 
-    public List<Comment> findByCodeId(String id) {
+    public List<Comment> findAllByCodeId(String id) {
         List<Map<String, Object>> kvs = template.queryForList(
-            "select * from comment join users on comment.author_id = users.id where code_id = ?",
+            "select * from comment left outer join users on comment.author_id = users.id where code_id = ?",
             id
         );
 

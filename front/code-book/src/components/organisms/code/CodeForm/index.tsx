@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { User } from '../../../../types/user'
 import { FileCodeForm } from '../FileCodeForm'
 import { SnippetCodeForm } from '../SnippetCodeForm'
 import { UrlCodeForm } from '../UrlCodeForm'
 import { device } from 'components/device'
 
 type Props = {
-  user: User
   bookId: string
 }
 
@@ -52,18 +50,18 @@ const Button = styled.div<{ active: boolean }>`
   }
 `
 
-const codeForm = (user: User, active: 'file' | 'url' | 'snippet', bookId: string) => {
+const codeForm = (active: 'file' | 'url' | 'snippet', bookId: string) => {
   switch (active) {
     case 'file':
-      return <FileCodeForm user={user} bookId={bookId} />
+      return <FileCodeForm bookId={bookId} />
     case 'url':
-      return <UrlCodeForm user={user} bookId={bookId} />
+      return <UrlCodeForm bookId={bookId} />
     case 'snippet':
-      return <SnippetCodeForm user={user} bookId={bookId} />
+      return <SnippetCodeForm bookId={bookId} />
   }
 }
 
-export const CodeForm = ({ user, bookId }: Props) => {
+export const CodeForm = ({ bookId }: Props) => {
   const [active, setActive] = useState<'file' | 'url' | 'snippet'>('file')
 
   return (
@@ -79,7 +77,7 @@ export const CodeForm = ({ user, bookId }: Props) => {
           Snippet
         </Button>
       </ButtonArea>
-      {codeForm(user, active, bookId)}
+      {codeForm(active, bookId)}
     </>
   )
 }
