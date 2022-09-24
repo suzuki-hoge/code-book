@@ -8,9 +8,14 @@ import { BookDetail } from '../../components/templates/book/BookDetail'
 import { BookFindOneResponse } from '../api/books/[id]'
 
 const Page = () => {
-  const bookId = useRouter().query.id as string
+  const router = useRouter()
 
-  const { status, data } = useQuery([], async () => (await axios.get<BookFindOneResponse>(`/api/books/${bookId}`)).data)
+  const bookId = router.query.id as string
+
+  const { status, data } = useQuery(
+    [bookId],
+    async () => (await axios.get<BookFindOneResponse>(`/api/books/${bookId}`)).data,
+  )
 
   if (status == 'loading') {
     return <p>Loading...</p>

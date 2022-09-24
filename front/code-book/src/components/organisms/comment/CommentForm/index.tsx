@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import axios from 'axios'
+import { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../../../../pages/_app'
 import { Button } from '../../../atoms/Button'
@@ -17,7 +17,7 @@ const Label = styled.p`
   margin: 0 0 0.5em 0;
 `
 
-const Description = styled.textarea`
+const Body = styled.textarea`
   width: 80%;
   padding: 4px;
 `
@@ -28,16 +28,16 @@ const ButtonArea = styled.div`
 `
 
 export const CommentForm = ({ codeId }: Props) => {
-  const router = useRouter()
-
   const user = useContext(UserContext)
+
+  const [body, setBody] = useState('')
 
   return (
     <Div>
       <VerticalItems>
         <div>
           <Label>本文</Label>
-          <Description name="description" rows={8} />
+          <Body rows={8} value={body} onChange={(e) => setBody(e.target.value)} />
         </div>
       </VerticalItems>
 
@@ -47,8 +47,15 @@ export const CommentForm = ({ codeId }: Props) => {
           variant="primary"
           enabled={true}
           onclick={() => {
-            console.log(user, codeId)
-            router.push('/')
+            axios
+              .post('/api/comments/create', {
+                codeId: codeId,
+                authorId: user.id,
+                body: body,
+              })
+              .then(() => {
+                location.href = `/codes/${codeId}`
+              })
           }}
         />
       </ButtonArea>

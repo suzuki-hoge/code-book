@@ -31,7 +31,10 @@ insert into code(id, book_id, author_id, title, created)
 values ('55555555-5555-4555-9555-555555555555', '22222222-2222-4222-8222-222222222222', '66666666-6666-4666-8266-666666666666', '提出 #34855947', '2022/09/14 21:50:20');
 
 insert into code(id, book_id, author_id, title, created)
-values ('66666666-6666-4666-9666-666666666666', '33333333-3333-4333-8333-333333333333', '33333333-3333-4333-8233-333333333333', 'テストデータを消すクエリ', '2022/08/27 11:25:47');
+values ('66666666-6666-4666-9666-666666666666', '22222222-2222-4222-8222-222222222222', '33333333-3333-4333-8233-333333333333', '提出 #34995010', '2022-09-19 19:15:04');
+
+insert into code(id, book_id, author_id, title, created)
+values ('77777777-7777-4777-9777-777777777777', '33333333-3333-4333-8333-333333333333', '33333333-3333-4333-8233-333333333333', 'テストデータを消すクエリ', '2022/08/27 11:25:47');
 
 -- code part
 
@@ -52,8 +55,11 @@ values ('44444444-4444-4444-9444-444444444444', 'url', 'https://atcoder.jp/conte
 insert into code_part(code_id, kind, val0, tag0)
 values ('55555555-5555-4555-9555-555555555555', 'url', 'https://atcoder.jp/contests/typical90/submissions/34855947', 'hs');
 
+insert into code_part(code_id, kind, val0, tag0)
+values ('66666666-6666-4666-9666-666666666666', 'url', 'https://atcoder.jp/contests/typical90/submissions/34995010', 'go');
+
 insert into code_part(code_id, kind, val0, val1, val2, val3, val4, val5, tag0)
-values ('66666666-6666-4666-9666-666666666666', 'snippet', 'delete.sql', STRINGDECODE('delete status\nwhere status.user_id in ( $user_id$ )\nand plan = "$plan$";\n\ndelete item\nfrom item\njoin foo on foo.id = item.foo_id\nwhere foo.user_id in ( $user_id$ );\n\ndelete foo\nwhere user_id in ( $user_id$ );'), 'user_id', '', 'plan', 'active', 'sql');
+values ('77777777-7777-4777-9777-777777777777', 'snippet', 'delete.sql', STRINGDECODE('delete status\nwhere status.user_id in ( $user_id$ )\nand plan = "$plan$";\n\ndelete item\nfrom item\njoin foo on foo.id = item.foo_id\nwhere foo.user_id in ( $user_id$ );\n\ndelete foo\nwhere user_id in ( $user_id$ );'), 'user_id', '', 'plan', 'active', 'sql');
 
 -- comment
 
@@ -69,13 +75,13 @@ insert into comment(id, code_id, author_id, body, created)
 values ('33333333-3333-4333-a333-333333333333', '44444444-4444-4444-9444-444444444444', '55555555-5555-4555-8255-555555555555', 'gcd は昔実装したやつのコピペ', '2022/09/15 15:33:11');
 
 insert into comment(id, code_id, author_id, body, created)
-values ('44444444-4444-4444-a444-444444444444', '44444444-4444-4444-9444-444444444444', '66666666-6666-4666-8266-666666666666', 'つまりワンライナなのねw', '2022/09/15 15:33:11');
+values ('44444444-4444-4444-a444-444444444444', '44444444-4444-4444-9444-444444444444', '55555555-5555-4555-8255-555555555555', 'なので実質ワンライナです', '2022/09/15 15:33:11');
 
 insert into comment(id, code_id, author_id, body, created)
 values ('55555555-5555-4555-a555-555555555555', '55555555-5555-4555-9555-555555555555', '44444444-4444-4444-8244-444444444444', STRINGDECODE('これか\n\nghci> :t gcd\ngcd :: Integral a => a -> a -> a'), '2022/09/15 15:33:11');
 
 insert into comment(id, code_id, author_id, body, created)
-values ('66666666-6666-4666-a666-666666666666', '66666666-6666-4666-9666-666666666666', '33333333-3333-4333-8233-333333333333', STRINGDECODE('メインアカウント: 1234\nサブアカウント: 5678'), '2022/08/27 11:27:59');
+values ('66666666-6666-4666-a666-666666666666', '77777777-7777-4777-9777-777777777777', '33333333-3333-4333-8233-333333333333', STRINGDECODE('メインアカウント: 1234\nサブアカウント: 5678'), '2022/08/27 11:27:59');
 
 -- users
 
@@ -104,7 +110,7 @@ values ('66666666-6666-4666-8266-666666666666', 'ペンギン', 'https://encrypt
 truncate table tag;
 
 insert into tag(name, icon)
-values ('unknown', 'https://cdn5.vectorstock.com/i/1000x1000/02/19/question-mark-icon-vector-23190219.jpg');
+values ('unknown', 'https://cdn.icon-icons.com/icons2/2645/PNG/512/question_circle_icon_159907.png');
 
 insert into tag(name, icon)
 values ('rs', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/2048px-Rust_programming_language_black_logo.svg.png');

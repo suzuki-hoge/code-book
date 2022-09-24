@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
@@ -86,14 +87,14 @@ export const SnippetCodeForm = ({ bookId }: Props) => {
               }}
             />
             <p style={{ margin: '0', color: '#666', fontSize: '0.8em' }}>
-              $ で囲った部分は変数埋め込みとなり入力できるようになります
+              $ で囲った部分は変数埋め込みとなり入力できるようになります ( 4 つまで有効 )
             </p>
           </div>
 
           <VerticalItems>
             {variables.map((variable, i) => (
               <div key={i}>
-                <Label>${variable.name}$</Label>
+                <Label>{variable.name} の初期値</Label>
                 <Text
                   type="text"
                   value={variable.value}
@@ -115,8 +116,19 @@ export const SnippetCodeForm = ({ bookId }: Props) => {
           variant="primary"
           enabled={true}
           onclick={() => {
-            console.log(user)
-            router.push('/')
+            axios
+              .post('/api/codes/create', {
+                bookId: bookId,
+                authorId: user.id,
+                title: title,
+                kind: 'snippet',
+                vals: [file[0].name, file[0].text].concat(
+                  variables.reduce((acc, variable) => acc.concat([variable.name, variable.value]), [] as string[]),
+                ),
+              })
+              .then((response) => {
+                router.push(`/codes/${response.data.codeId}`)
+              })
           }}
         />
       </ButtonArea>

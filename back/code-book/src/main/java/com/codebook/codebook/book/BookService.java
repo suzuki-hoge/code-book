@@ -6,8 +6,11 @@ import lombok.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Value
@@ -47,6 +50,18 @@ public class BookService {
             (String) kv.get("created"),
             codeService.findAllByBookId((String) kv.get("id"))
         );
+    }
+
+    public String create(BookRequest request) {
+        String id = UUID.randomUUID().toString();
+        String created = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm:ss"));
+
+        template.update(
+            "insert into book (id, author_id, emoji, title, description, created) values (?, ?, ?, ?, ?, ?)",
+            id, request.authorId, request.emoji, request.title, request.description, created
+        );
+
+        return id;
     }
 
 }

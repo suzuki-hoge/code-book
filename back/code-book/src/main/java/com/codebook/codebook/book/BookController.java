@@ -4,6 +4,8 @@ import lombok.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,6 +28,11 @@ public class BookController {
     @GetMapping("/book/{book_id}")
     public Map<String, Object> findOne(@PathVariable("book_id") String bookId) {
         return bookService.findByBookId(bookId).toMap();
+    }
+
+    @PostMapping("/book")
+    public Map<String, String> create(@RequestBody BookRequest request) {
+        return Map.of("id", bookService.create(request));
     }
 
 }

@@ -18,6 +18,7 @@ const Img = styled.img<{ variant: 'small' | 'medium' | 'large' }>`
   width: ${(props) => sizes[props.variant]};
   border-radius: 50%;
   display: block;
+  background-color: ${(props) => props.theme.colors.content};
 `
 
 export const Icon = ({ icon, variant }: Props) => {

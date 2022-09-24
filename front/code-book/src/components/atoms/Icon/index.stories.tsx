@@ -21,3 +21,9 @@ SmallTag.args = {
   icon: scala.icon,
   variant: 'small',
 }
+
+export const PngImageTag = Template.bind({})
+PngImageTag.args = {
+  icon: 'https://cdn.icon-icons.com/icons2/2645/PNG/512/question_circle_icon_159907.png',
+  variant: 'medium',
+}

@@ -37,19 +37,19 @@ public class CodePartService {
             (String) kv.get("tag4"),
             kv.get("tag0").equals("")
             ? ""
-            : (String) template.queryForMap("select * from tag where name = ?", kv.get("tag0")).get("icon"),
+            : (String) template.queryForMap("select * from tag where name = ? or name = 'unknown' limit 1", kv.get("tag0")).get("icon"),
             kv.get("tag1").equals("")
             ? ""
-            : (String) template.queryForMap("select * from tag where name = ?", kv.get("tag1")).get("icon"),
+            : (String) template.queryForMap("select * from tag where name = ? or name = 'unknown' limit 1", kv.get("tag1")).get("icon"),
             kv.get("tag2").equals("")
             ? ""
-            : (String) template.queryForMap("select * from tag where name = ?", kv.get("tag2")).get("icon"),
+            : (String) template.queryForMap("select * from tag where name = ? or name = 'unknown' limit 1", kv.get("tag2")).get("icon"),
             kv.get("tag3").equals("")
             ? ""
-            : (String) template.queryForMap("select * from tag where name = ?", kv.get("tag3")).get("icon"),
+            : (String) template.queryForMap("select * from tag where name = ? or name = 'unknown' limit 1", kv.get("tag3")).get("icon"),
             kv.get("tag4").equals("")
             ? ""
-            : (String) template.queryForMap("select * from tag where name = ?", kv.get("tag4")).get("icon")
+            : (String) template.queryForMap("select * from tag where name = ? or name = 'unknown' limit 1", kv.get("tag4")).get("icon")
         );
     }
 

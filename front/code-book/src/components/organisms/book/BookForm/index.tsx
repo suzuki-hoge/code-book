@@ -1,5 +1,6 @@
+import axios from 'axios'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { UserContext } from '../../../../pages/_app'
 import { Button } from '../../../atoms/Button'
@@ -36,22 +37,26 @@ export const BookForm = () => {
 
   const user = useContext(UserContext)
 
+  const [emoji, setEmoji] = useState('')
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+
   return (
     <Div>
       <VerticalItems>
         <div>
           <Label>絵文字</Label>
-          <Emoji type="text" name="emoji" />
+          <Emoji type="text" value={emoji} onChange={(e) => setEmoji(e.target.value)} />
         </div>
 
         <div>
           <Label>タイトル</Label>
-          <Title type="text" name="title" />
+          <Title type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
 
         <div>
           <Label>説明</Label>
-          <Description name="description" rows={8} />
+          <Description rows={8} value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
       </VerticalItems>
 
@@ -61,8 +66,16 @@ export const BookForm = () => {
           variant="primary"
           enabled={true}
           onclick={() => {
-            console.log(user)
-            router.push('/')
+            axios
+              .post('/api/books/create', {
+                authorId: user.id,
+                emoji: emoji,
+                title: title,
+                description: description,
+              })
+              .then((response) => {
+                router.push(`/books/${response.data.bookId}`)
+              })
           }}
         />
       </ButtonArea>

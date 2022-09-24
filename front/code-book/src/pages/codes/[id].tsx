@@ -8,9 +8,14 @@ import { CodeDetail } from '../../components/templates/code/CodeDetail'
 import { CodeFindOneResponse } from '../api/codes/[id]'
 
 const Page = () => {
-  const codeId = useRouter().query.id as string
+  const router = useRouter()
 
-  const { status, data } = useQuery([], async () => (await axios.get<CodeFindOneResponse>(`/api/codes/${codeId}`)).data)
+  const codeId = router.query.id as string
+
+  const { status, data } = useQuery(
+    [codeId],
+    async () => (await axios.get<CodeFindOneResponse>(`/api/codes/${codeId}`)).data,
+  )
 
   if (status == 'loading') {
     return <p>Loading...</p>

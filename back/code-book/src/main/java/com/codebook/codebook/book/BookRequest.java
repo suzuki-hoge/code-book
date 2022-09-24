@@ -1,12 +1,20 @@
 package com.codebook.codebook.book;
 
-import lombok.Value;
+import lombok.Getter;
+import lombok.Setter;
 
-@Value
-public class BookRequest {
+import java.io.Serializable;
 
-    String id;
+@Getter
+@Setter
+public class BookRequest implements Serializable {
+
+    String emoji;
 
     String title;
+
+    String description;
+
+    String authorId;
 
 }

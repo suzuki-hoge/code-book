@@ -5,8 +5,11 @@ import lombok.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Value
@@ -33,6 +36,18 @@ public class CommentService {
                 (String) kv.get("created")
             )
         ).collect(Collectors.toList());
+    }
+
+    public String create(CommentRequest request) {
+        String id = UUID.randomUUID().toString();
+        String created = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm:ss"));
+
+        template.update(
+            "insert into comment (id, code_id, author_id, body, created) values (?, ?, ?, ?, ?)",
+            id, request.codeId, request.authorId, request.body, created
+        );
+
+        return id;
     }
 
 }

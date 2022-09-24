@@ -19,6 +19,7 @@ const Input = styled.input<{ variant: 'primary' | 'sub' | 'caution' }>`
   background-color: ${(props) => colors[props.variant]};
   border-radius: 8px;
   padding: 0.5em 1em 0.5em 1em;
+  cursor: pointer;
 `
 
 export const Button = ({ value, variant, enabled, onclick }: Props) => {

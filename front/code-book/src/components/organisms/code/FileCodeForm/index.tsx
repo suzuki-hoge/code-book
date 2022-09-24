@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
@@ -90,7 +91,7 @@ export const FileCodeForm = ({ bookId }: Props) => {
                     <Button
                       value="+"
                       variant="sub"
-                      enabled={true}
+                      enabled={files.length < 5}
                       onclick={() => {
                         const fs = [...files]
                         fs.push({ name: '', text: '' })
@@ -111,8 +112,17 @@ export const FileCodeForm = ({ bookId }: Props) => {
           variant="primary"
           enabled={true}
           onclick={() => {
-            console.log(user)
-            router.push('/')
+            axios
+              .post('/api/codes/create', {
+                bookId: bookId,
+                authorId: user.id,
+                title: title,
+                kind: 'file',
+                vals: files.reduce((acc, file) => acc.concat([file.name, file.text]), [] as string[]),
+              })
+              .then((response) => {
+                router.push(`/codes/${response.data.codeId}`)
+              })
           }}
         />
       </ButtonArea>
