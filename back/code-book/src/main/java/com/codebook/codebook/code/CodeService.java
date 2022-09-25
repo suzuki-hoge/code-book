@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Value
@@ -82,14 +83,15 @@ public class CodeService {
             );
         } else {
             String tag0, tag1, tag2, tag3, tag4;
+            Function<String, String> ext = s -> s.equals("") ? "" : s.contains(".") ? s.split("\\.")[1] : "";
             if (request.kind.equals("file")) {
-                tag0 = request.val(0).equals("") ? "" : request.val(0).split("\\.")[1];
-                tag1 = request.val(2).equals("") ? "" : request.val(2).split("\\.")[1];
-                tag2 = request.val(4).equals("") ? "" : request.val(4).split("\\.")[1];
-                tag3 = request.val(6).equals("") ? "" : request.val(6).split("\\.")[1];
-                tag4 = request.val(8).equals("") ? "" : request.val(8).split("\\.")[1];
+                tag0 = ext.apply(request.val(0));
+                tag1 = ext.apply(request.val(2));
+                tag2 = ext.apply(request.val(4));
+                tag3 = ext.apply(request.val(6));
+                tag4 = ext.apply(request.val(8));
             } else {
-                tag0 = request.val(0).equals("") ? "" : request.val(0).split("\\.")[1];
+                tag0 = ext.apply(request.val(0));
                 tag1 = "";
                 tag2 = "";
                 tag3 = "";

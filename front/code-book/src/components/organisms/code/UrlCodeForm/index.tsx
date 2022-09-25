@@ -1,9 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
 import { useRouter } from 'next/router'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
+import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
+import * as yup from 'yup'
 import { UserContext } from '../../../../pages/_app'
-import { Button } from '../../../atoms/Button'
+import { SubmitButton } from '../../../atoms/SubmitButton'
 import { VerticalItems } from '../../../molecules/VerticalItems'
 
 type Props = {
@@ -27,60 +30,84 @@ const ButtonArea = styled.div`
   position: relative;
 `
 
+const ErrorMessage = styled.p`
+  margin: 0;
+  font-size: 0.8em;
+  color: #f99;
+`
+
+type Form = {
+  title: string
+  url: string
+  tags: string
+}
+
+const schema = yup.object().shape({
+  title: yup.string().required('必須項目です'),
+  url: yup.string().required('必須項目です'),
+  tags: yup.string().required('必須項目です').matches(/^[a-z]+(,[a-z]+)*$/, {message: '入力内容が正しくありません'}),
+})
+
 export const UrlCodeForm = ({ bookId }: Props) => {
   const router = useRouter()
 
   const user = useContext(UserContext)
 
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
-  const [tags, setTags] = useState<string>('')
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Form>({ resolver: yupResolver(schema) })
 
   return (
-    <Div>
-      <VerticalItems>
-        <>
-          <div>
-            <Label>タイトル</Label>
-            <Text type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-          </div>
+    <form
+      onSubmit={handleSubmit((data) => {
+        const _data = {
+          ...data,
+          ...{
+            authorId: user.id,
+            bookId: bookId,
+            kind: 'url',
+            vals: [data.url],
+            tags: data.tags.split(',').map((s) => s.trim()),
+          },
+        }
 
-          <div>
-            <Label>URL</Label>
-            <Text type="url" value={url} onChange={(e) => setUrl(e.target.value)} />
-          </div>
+        axios.post('/api/codes/create', _data).then((response) => {
+          router.push(`/codes/${response.data.codeId}`)
+        })
+      })}
+    >
+      <Div>
+        <VerticalItems>
+          <>
+            <div>
+              <Label>タイトル</Label>
+              <Text type="text" {...register('title')} maxLength={250} />
+              <ErrorMessage>{errors.title?.message}</ErrorMessage>
+            </div>
 
-          <div>
-            <Label>タグ</Label>
-            <Text type="text" value={tags} onChange={(e) => setTags(e.target.value)} />
-            <p style={{ margin: '0', color: '#666', fontSize: '0.8em', width: '80%' }}>
-              関係ファイルの拡張子を . なしで入力してください ( , 区切りで 5 つまで )
-            </p>
-          </div>
-        </>
-      </VerticalItems>
+            <div>
+              <Label>URL</Label>
+              <Text type="text" {...register('url')} maxLength={4000} />
+              <ErrorMessage>{errors.url?.message}</ErrorMessage>
+            </div>
 
-      <ButtonArea>
-        <Button
-          value="New Code"
-          variant="primary"
-          enabled={true}
-          onclick={() => {
-            axios
-              .post('/api/codes/create', {
-                bookId: bookId,
-                authorId: user.id,
-                title: title,
-                kind: 'url',
-                vals: [url],
-                tags: tags.split(',').map((s) => s.trim()),
-              })
-              .then((response) => {
-                router.push(`/codes/${response.data.codeId}`)
-              })
-          }}
-        />
-      </ButtonArea>
-    </Div>
+            <div>
+              <Label>タグ</Label>
+              <Text type="text" {...register('tags')} maxLength={200} />
+              <p style={{ margin: '0', color: '#666', fontSize: '0.8em', width: '80%' }}>
+                関係ファイルの拡張子を . なしで入力してください ( , 区切りで 5 つまで )
+              </p>
+              <ErrorMessage>{errors.tags?.message}</ErrorMessage>
+            </div>
+          </>
+        </VerticalItems>
+
+        <ButtonArea>
+          <SubmitButton value="New Code" enabled={true} />
+        </ButtonArea>
+      </Div>
+    </form>
   )
 }

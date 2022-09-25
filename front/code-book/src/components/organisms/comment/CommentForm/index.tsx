@@ -1,8 +1,11 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
+import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
+import * as yup from 'yup'
 import { UserContext } from '../../../../pages/_app'
-import { Button } from '../../../atoms/Button'
+import { SubmitButton } from '../../../atoms/SubmitButton'
 import { VerticalItems } from '../../../molecules/VerticalItems'
 
 type Props = {
@@ -27,38 +30,50 @@ const ButtonArea = styled.div`
   position: relative;
 `
 
+const ErrorMessage = styled.p`
+  margin: 0;
+  font-size: 0.8em;
+  color: #f99;
+`
+
+type Form = {
+  body: string
+}
+
+const schema = yup.object().shape({
+  body: yup.string().required('必須項目です'),
+})
+
 export const CommentForm = ({ codeId }: Props) => {
   const user = useContext(UserContext)
 
-  const [body, setBody] = useState('')
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Form>({ resolver: yupResolver(schema) })
 
   return (
-    <Div>
-      <VerticalItems>
-        <div>
-          <Label>本文</Label>
-          <Body rows={8} value={body} onChange={(e) => setBody(e.target.value)} />
-        </div>
-      </VerticalItems>
+    <form
+      onSubmit={handleSubmit((data) =>
+        axios
+          .post('/api/comments/create', { ...data, ...{ authorId: user.id, codeId: codeId } })
+          .then(() => (location.href = `/codes/${codeId}`)),
+      )}
+    >
+      <Div>
+        <VerticalItems>
+          <div>
+            <Label>本文</Label>
+            <Body rows={8} {...register('body')} maxLength={4000} />
+            <ErrorMessage>{errors.body?.message}</ErrorMessage>
+          </div>
+        </VerticalItems>
 
-      <ButtonArea>
-        <Button
-          value="Add Comment"
-          variant="primary"
-          enabled={true}
-          onclick={() => {
-            axios
-              .post('/api/comments/create', {
-                codeId: codeId,
-                authorId: user.id,
-                body: body,
-              })
-              .then(() => {
-                location.href = `/codes/${codeId}`
-              })
-          }}
-        />
-      </ButtonArea>
-    </Div>
+        <ButtonArea>
+          <SubmitButton value="New Comment" enabled={true} />
+        </ButtonArea>
+      </Div>
+    </form>
   )
 }
