@@ -1,0 +1,19 @@
+@mixin base {
+  border-radius: 50%;
+  display: block;
+  background-color: var(--color-bg-content);
+}
+
+.small {
+  @include base;
+
+  height: var(--icon-small);
+  width: var(--icon-small);
+}
+
+.medium {
+  @include base;
+
+  height: var(--icon-medium);
+  width: var(--icon-medium);
+}

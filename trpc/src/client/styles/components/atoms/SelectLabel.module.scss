@@ -1,0 +1,19 @@
+@mixin base {
+  font-size: var(--font-medium);
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-radius: 13px;
+  border: white solid 0;
+  cursor: pointer;
+}
+
+.selected {
+  @include base;
+  color: #555555;
+  background-color: var(--color-bg-submit);
+}
+
+.unselected {
+  @include base;
+  color: var(--color-tx-sub);
+  background-color: var(--color-bg-content);
+}

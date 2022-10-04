@@ -1,0 +1,18 @@
+.component {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  row-gap: 1em;
+
+  div:first-child {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.input {
+  flex-grow: 1;
+  font-size: 1.2em;
+  padding: 0.3em;
+  border-radius: var(--radius-element);
+}

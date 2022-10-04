@@ -1,0 +1,21 @@
+.component {
+  background-color: var(--color-bg-content);
+  border-radius: var(--radius-flame);
+  padding: 0 0.5em;
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  ol,ul {
+    padding-left: 22px;
+  }
+}
+
+.markdown-text pre {
+  border-radius: var(--radius-flame);
+}

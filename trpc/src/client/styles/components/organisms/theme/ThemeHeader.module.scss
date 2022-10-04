@@ -1,0 +1,40 @@
+.component {
+  display: flex;
+  flex-direction: column;
+
+  .row1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span:first-child {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    div:last-child {
+      display: flex;
+      column-gap: 1em;
+    }
+  }
+
+  .row2 {
+    display: flex;
+    align-items: center;
+    column-gap: 0.2em;
+
+    div {
+      display: flex;
+      align-items: baseline;
+      column-gap: 0.5em;
+    }
+
+    span:first-child {
+      font-size: 1.2em;
+    }
+
+    span:last-child {
+      font-size: 0.8em;
+    }
+  }
+}

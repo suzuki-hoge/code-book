@@ -1,0 +1,23 @@
+.component {
+  margin: 0 auto;
+}
+
+.headerRoot {
+  background-color: var(--color-bg-content);
+
+  .header {
+    max-width: 880px;
+    padding: 0.5em 0;
+    margin: 0 auto;
+  }
+}
+
+.contentRoot {
+  background-color: var(--color-bg-background);
+
+  .content {
+    max-width: 880px;
+    padding: 1em 0;
+    margin: 0 auto;
+  }
+}

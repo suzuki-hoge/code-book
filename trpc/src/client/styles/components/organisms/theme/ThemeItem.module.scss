@@ -1,0 +1,12 @@
+.component {
+  .header {
+  }
+
+  .body {
+    background-color: var(--color-bg-content);
+    border: var(--color-ln-content) solid 1px;
+    border-radius: var(--radius-flame);
+    margin: 0.5em 0;
+    padding: 0.5em;
+  }
+}

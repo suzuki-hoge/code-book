@@ -1,0 +1,43 @@
+.component {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75em;
+  padding: 0.5em;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  padding: 0 0.5em;
+
+  div:first-child {
+    display: flex;
+    align-items: baseline;
+    column-gap: 1em;
+  }
+
+  div:last-child {
+    display: flex;
+    column-gap: 1em;
+  }
+
+  span:first-child {
+    font-size: 1.2em;
+  }
+
+  span:last-child {
+    font-size: 0.8em;
+  }
+}
+
+.sep {
+  margin: 0;
+  border-style: none;
+  border-top: var(--color-ln-content) solid 1px;
+
+}
+
+.body {
+}

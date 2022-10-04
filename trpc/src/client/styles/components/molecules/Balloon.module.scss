@@ -1,0 +1,30 @@
+.component {
+  background-color: var(--color-bg-content);
+  border-radius: var(--radius-flame);
+  border: var(--color-ln-content) solid 2px;
+  margin-left: 1em;
+  padding: 0.5em;
+  position: relative;
+
+  // triangle background
+  &::before {
+    content: '';
+    border: 10px solid transparent;
+    border-right: 10px solid var(--color-bg-content);
+    position: absolute;
+    top: 13px;
+    left: -19px;
+    z-index: 2;
+  }
+
+  // triangle border
+  &::after {
+    content: '';
+    border: 12px solid transparent;
+    border-right: 12px solid var(--color-ln-content);
+    position: absolute;
+    top: 11px;
+    left: -24px;
+    z-index: 1;
+  }
+}
