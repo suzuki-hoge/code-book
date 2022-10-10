@@ -12,4 +12,5 @@ const Template: ComponentStory<typeof ThemeItem> = (args) => <ThemeItem {...args
 export const Component = Template.bind({})
 Component.args = {
   theme: markdownTextThemeFixture,
+  editable: true,
 }

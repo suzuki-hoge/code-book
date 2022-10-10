@@ -8,5 +8,9 @@
     border-radius: var(--radius-flame);
     margin: 0.5em 0;
     padding: 0.5em;
+
+    .message {
+      color: var(--color-tx-sub)
+    }
   }
 }

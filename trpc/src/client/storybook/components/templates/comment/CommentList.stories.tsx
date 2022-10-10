@@ -1,6 +1,6 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react'
-import {CommentList} from 'client/components/templates/comment/CommentList'
-import {markdownTextCommentFixture, plainTextCommentFixture} from "../../../fixtures/Comment";
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { markdownTextCommentFixture, plainTextCommentFixture } from '../../../fixtures/Comment'
+import { CommentList } from 'client/components/templates/comment/CommentList'
 
 export default {
   title: 'Templates/comment/CommentList',
@@ -11,5 +11,5 @@ const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...
 
 export const Component = Template.bind({})
 Component.args = {
-  comments: [markdownTextCommentFixture, plainTextCommentFixture]
+  comments: [markdownTextCommentFixture, plainTextCommentFixture],
 }

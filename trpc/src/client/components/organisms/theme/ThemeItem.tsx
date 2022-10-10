@@ -2,20 +2,25 @@ import { FC } from 'react'
 import { MarkdownText } from '../../atoms/MarkdownText'
 import { ThemeHeader } from './ThemeHeader'
 import styles from 'client/styles/components/organisms/theme/ThemeItem.module.scss'
-import { Theme } from 'domain/Theme'
+import { ThemeSummary } from 'domain/Theme'
 
 type Props = {
-  theme: Theme
+  theme: ThemeSummary
+  editable: boolean
 }
 
 export const ThemeItem: FC<Props> = (props) => {
   return (
     <div className={styles.component}>
       <div className={styles.header}>
-        <ThemeHeader theme={props.theme} />
+        <ThemeHeader theme={props.theme} editable={props.editable} />
       </div>
       <div className={styles.body}>
-        <MarkdownText text={props.theme.description.body.split('\n').slice(0, 5).join('\n')} />
+        {props.theme.firstComment ? (
+          <MarkdownText text={props.theme.firstComment.body.split('\n').slice(0, 5).join('\n')} />
+        ) : (
+          <span className={styles.message}>no description.</span>
+        )}
       </div>
     </div>
   )

@@ -9,7 +9,14 @@ export default {
 
 const Template: ComponentStory<typeof CommentInput> = (args) => <CommentInput {...args} />
 
-export const Component = Template.bind({})
-Component.args = {
+export const CreateComponent = Template.bind({})
+CreateComponent.args = {
   user: userFixture,
+  variant: 'create',
+}
+
+export const UpdateComponent = Template.bind({})
+UpdateComponent.args = {
+  user: userFixture,
+  variant: 'update',
 }

@@ -9,7 +9,14 @@ export default {
 
 const Template: ComponentStory<typeof ThemeHeader> = (args) => <ThemeHeader {...args} />
 
-export const Component = Template.bind({})
-Component.args = {
+export const EditableComponent = Template.bind({})
+EditableComponent.args = {
   theme: markdownTextThemeFixture,
+  editable: true,
+}
+
+export const UneditableComponent = Template.bind({})
+UneditableComponent.args = {
+  theme: markdownTextThemeFixture,
+  editable: false,
 }

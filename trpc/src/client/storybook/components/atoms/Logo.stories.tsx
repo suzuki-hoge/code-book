@@ -9,6 +9,4 @@ export default {
 const Template: ComponentStory<typeof Logo> = (args) => <Logo {...args} />
 
 export const Component = Template.bind({})
-Component.args = {
-
-}
+Component.args = {}

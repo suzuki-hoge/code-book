@@ -7,14 +7,11 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Coustard&display=swap"
-            rel="stylesheet"
-          />
+          <link href="https://fonts.googleapis.com/css?family=Coustard&display=swap" rel="stylesheet" />
         </Head>
         <body>
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     )

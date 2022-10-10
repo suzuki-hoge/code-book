@@ -24,8 +24,12 @@
 
   div:first-child {
     width: 100%;
-    display: flex;
   }
+}
+
+.buttons {
+  display: flex;
+  column-gap: 1em;
 }
 
 .input {

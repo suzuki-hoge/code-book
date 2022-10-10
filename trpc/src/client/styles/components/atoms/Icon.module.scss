@@ -1,7 +1,15 @@
+@mixin base {
+  cursor: pointer;
+}
+
 .small {
+  @include base;
+
   font-size: var(--font-medium);
 }
 
 .medium {
+  @include base;
+
   font-size: var(--font-large);
 }

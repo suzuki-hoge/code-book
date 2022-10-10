@@ -40,3 +40,7 @@ next-env.d.ts
 .vscode/*
 !.vscode/settings.default.json
 !.vscode/extensions.json
+
+# database
+dev.db
+

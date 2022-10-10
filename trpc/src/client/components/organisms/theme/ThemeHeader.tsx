@@ -1,26 +1,54 @@
-import { FC } from 'react'
-import { Theme } from '../../../../domain/Theme'
+import Link from 'next/link'
+import { FC, useState } from 'react'
+import { ThemeCore } from '../../../../domain/Theme'
+import { Button } from '../../atoms/Button'
 import { DeleteIcon } from '../../atoms/DeleteIcon'
 import { EditIcon } from '../../atoms/EditIcon'
 import { ImageIcon } from '../../atoms/ImageIcon'
+import { SubmitButton } from '../../atoms/SubmitButton'
 import { DiscussionIcon } from 'client/components/atoms/DiscussionIcon'
 import styles from 'client/styles/components/organisms/theme/ThemeHeader.module.scss'
 
 type Props = {
-  theme: Theme
+  theme: ThemeCore
+
+  editable: boolean
 }
 
 export const ThemeHeader: FC<Props> = (props) => {
-  return (
-    <div className={styles.component}>
-      <div className={styles.row1}>
-        <span>{props.theme.title}</span>
+  const [writing, setWriting] = useState(false)
+
+  const View: FC<Props> = (props) => {
+    return (
+      <div className={styles.view}>
+        <Link href={`/theme/${props.theme.id}`}>
+          <span className={styles.title}>{props.theme.title}</span>
+        </Link>
         <div>
-          <EditIcon variant={'small'} />
-          <DeleteIcon variant={'small'} />
-          <DiscussionIcon count={props.theme.comments} variant={'small'} />
+          {props.editable && <EditIcon variant={'small'} onClick={() => setWriting(true)} />}
+          {props.editable && <DeleteIcon variant={'small'} />}
+          <DiscussionIcon count={props.theme.commentCount} variant={'small'} />
         </div>
       </div>
+    )
+  }
+
+  const Write: FC<Props> = (props) => {
+    return (
+      <div className={styles.write}>
+        <input className={styles.input} type="text" placeholder="Theme Title" value={props.theme.title} />
+        <div>
+          <Button value={'Cancel'} onClick={() => setWriting(false)} />
+          <SubmitButton value={'Update'} enabled={true} />
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className={styles.component}>
+      {!writing && <View {...props} />}
+      {writing && <Write {...props} />}
       <div className={styles.row2}>
         <ImageIcon path={props.theme.author.icon} variant={'small'} />
         <div>

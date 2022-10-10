@@ -1,19 +1,31 @@
-import {NextPage} from "next";
-import {Frame} from "../../client/components/templates/Frame";
-import {userFixture} from "../../client/storybook/fixtures/User";
-import {markdownTextThemeFixture, plainTextThemeFixture} from "../../client/storybook/fixtures/Theme";
+import { NextPage } from 'next'
+import { useContext } from 'react'
+import { clientTrpc } from '../../client/client_trpc'
+import { ThemeInput } from '../../client/components/organisms/theme/ThemeInput'
+import { Frame } from '../../client/components/templates/Frame'
+import { ThemeList } from '../../client/components/templates/theme/ThemeList'
+import { UserContext } from '../_app'
 import styles from 'client/styles/components/pages/ThemeDetail.module.scss'
-import {ThemeList} from "../../client/components/templates/theme/ThemeList";
 
 const Page: NextPage = () => {
-  const user = userFixture
-  const themes = [markdownTextThemeFixture, plainTextThemeFixture]
+  const user = useContext(UserContext)
 
-  return <Frame user={user}>
-    <div className={styles.component}>
-      <ThemeList themes={themes}/>
-    </div>
-  </Frame>
+  const themes = clientTrpc.theme.summaries.useQuery(undefined, {})?.data ?? []
+
+  if (!user) {
+    return <p>loading...</p>
+  }
+
+  return (
+    <Frame user={user}>
+      <div className={styles.component}>
+        <ThemeList themes={themes} />
+      </div>
+      <div style={{ marginTop: '3em' }}>
+        <ThemeInput user={user} />
+      </div>
+    </Frame>
+  )
 }
 
 export default Page

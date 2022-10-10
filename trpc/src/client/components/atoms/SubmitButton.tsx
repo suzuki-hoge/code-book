@@ -1,21 +1,20 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import styles from 'client/styles/components/atoms/SubmitButton.module.scss'
 
 type Props = {
   value: string
   enabled: boolean
+  onClick: () => void
 }
 
 export const SubmitButton: FC<Props> = (props) => {
-  const [enabled, setEnabled] = useState(props.enabled)
-
   return (
     <input
-      type="submit"
+      type="input"
       className={styles.component}
       value={props.value}
-      disabled={!enabled}
-      onClick={() => setEnabled(false)}
+      disabled={!props.enabled}
+      onClick={props.onClick}
     />
   )
 }

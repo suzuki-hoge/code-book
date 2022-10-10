@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { userFixture } from '../../fixtures/User'
 import { Header } from 'client/components/templates/Header'
-import {userFixture} from "../../fixtures/User";
 
 export default {
   title: 'Templates/Header',
@@ -11,5 +11,5 @@ const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />
 
 export const Component = Template.bind({})
 Component.args = {
-user:userFixture
+  user: userFixture,
 }
