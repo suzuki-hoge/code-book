@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { FC, useState } from 'react'
-import { ThemeCore } from '../../../../domain/Theme'
-import { Button } from '../../atoms/Button'
-import { DeleteIcon } from '../../atoms/DeleteIcon'
-import { EditIcon } from '../../atoms/EditIcon'
-import { ImageIcon } from '../../atoms/ImageIcon'
-import { SubmitButton } from '../../atoms/SubmitButton'
+import { Button } from 'client/components/atoms/Button'
+import { DeleteIcon } from 'client/components/atoms/DeleteIcon'
 import { DiscussionIcon } from 'client/components/atoms/DiscussionIcon'
+import { EditIcon } from 'client/components/atoms/EditIcon'
+import { ImageIcon } from 'client/components/atoms/ImageIcon'
+import { SubmitButton } from 'client/components/atoms/SubmitButton'
 import styles from 'client/styles/components/organisms/theme/ThemeHeader.module.scss'
+import { ThemeCore } from 'domain/Theme'
 
 type Props = {
   theme: ThemeCore

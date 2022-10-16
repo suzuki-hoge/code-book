@@ -1,6 +1,6 @@
 import Database from 'better-sqlite3'
-import {Comment} from '../../domain/Comment'
-import {format} from 'date-fns'
+import { format } from 'date-fns'
+import { Comment } from 'domain/Comment'
 
 const db = new Database('database/dev.db')
 
@@ -41,11 +41,15 @@ export function findCommentsByThemeId(themeId: string): Comment[] {
 }
 
 export function createComment(id: string, themeId: string, body: string, authorId: string): void {
-  db.prepare('insert into comment (id, theme_id, body, created, author_id) values (?, ?, ?, ?, ?)')
-    .run(id, themeId, body, format(new Date(), 'yyyy/MM/dd HH:mm'), authorId)
+  db.prepare('insert into comment (id, theme_id, body, created, author_id) values (?, ?, ?, ?, ?)').run(
+    id,
+    themeId,
+    body,
+    format(new Date(), 'yyyy/MM/dd HH:mm'),
+    authorId,
+  )
 }
 
-export function updateComment(id: string,  body: string): void {
-  db.prepare('update comment set body = ? where id = ?')
-    .run(body, id)
+export function updateComment(id: string, body: string): void {
+  db.prepare('update comment set body = ? where id = ?').run(body, id)
 }

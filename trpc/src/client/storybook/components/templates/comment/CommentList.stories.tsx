@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { markdownTextCommentFixture, plainTextCommentFixture } from '../../../fixtures/Comment'
 import { CommentList } from 'client/components/templates/comment/CommentList'
+import { markdownTextCommentFixture, plainTextCommentFixture } from 'client/storybook/fixtures/Comment'
 
 export default {
   title: 'Templates/comment/CommentList',

@@ -1,11 +1,11 @@
 import { NextPage } from 'next'
 import { useContext } from 'react'
-import { clientTrpc } from '../../client/client_trpc'
-import { ThemeInput } from '../../client/components/organisms/theme/ThemeInput'
-import { Frame } from '../../client/components/templates/Frame'
-import { ThemeList } from '../../client/components/templates/theme/ThemeList'
-import { UserContext } from '../_app'
+import { clientTrpc } from 'client/client_trpc'
+import { ThemeInput } from 'client/components/organisms/theme/ThemeInput'
+import { Frame } from 'client/components/templates/Frame'
+import { ThemeList } from 'client/components/templates/theme/ThemeList'
 import styles from 'client/styles/components/pages/ThemeDetail.module.scss'
+import { UserContext } from 'pages/_app'
 
 const Page: NextPage = () => {
   const user = useContext(UserContext)

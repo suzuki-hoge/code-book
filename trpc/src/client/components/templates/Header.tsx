@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { FC } from 'react'
-import { User } from '../../../domain/User'
-import { ImageIcon } from '../atoms/ImageIcon'
-import { Logo } from '../atoms/Logo'
+import { ImageIcon } from 'client/components/atoms/ImageIcon'
+import { Logo } from 'client/components/atoms/Logo'
 import styles from 'client/styles/components/templates/Header.module.scss'
+import { User } from 'domain/User'
 
 type Props = {
   user: User

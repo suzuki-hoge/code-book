@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { markdownTextThemeFixture, plainTextThemeFixture } from '../../../fixtures/Theme'
 import { ThemeList } from 'client/components/templates/theme/ThemeList'
+import { markdownTextThemeFixture, plainTextThemeFixture } from 'client/storybook/fixtures/Theme'
 
 export default {
   title: 'Templates/theme/ThemeList',

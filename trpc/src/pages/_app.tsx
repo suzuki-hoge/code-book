@@ -1,9 +1,9 @@
 import type { AppProps } from 'next/app'
 import React from 'react'
 import 'client/styles/global.scss'
-import { userFixture } from '../client/storybook/fixtures/User'
-import { User } from '../domain/User'
 import { clientTrpc } from 'client/client_trpc'
+import { userFixture } from 'client/storybook/fixtures/User'
+import { User } from 'domain/User'
 
 export const UserContext = React.createContext<User>(userFixture)
 

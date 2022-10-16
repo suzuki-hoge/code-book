@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react'
-import { User } from '../../../domain/User'
-import { Header } from './Header'
+import { Header } from 'client/components/templates/Header'
 import styles from 'client/styles/components/templates/Frame.module.scss'
+import { User } from 'domain/User'
 
 type Props = {
   user: User

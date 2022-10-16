@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { ThemeSummary } from '../../../../domain/Theme'
-import { ThemeItem } from '../../organisms/theme/ThemeItem'
+import { ThemeItem } from 'client/components/organisms/theme/ThemeItem'
 import styles from 'client/styles/components/templates/theme/ThemeList.module.scss'
+import { ThemeSummary } from 'domain/Theme'
 
 type Props = {
   themes: ThemeSummary[]

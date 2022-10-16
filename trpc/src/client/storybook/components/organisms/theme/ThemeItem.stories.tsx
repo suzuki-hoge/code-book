@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { markdownTextThemeFixture } from '../../../fixtures/Theme'
 import { ThemeItem } from 'client/components/organisms/theme/ThemeItem'
+import { markdownTextThemeFixture } from 'client/storybook/fixtures/Theme'
 
 export default {
   title: 'Organisms/theme/ThemeItem',

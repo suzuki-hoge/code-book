@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import { Comment } from '../../../../domain/Comment'
-import { CommentItem } from '../../organisms/comment/CommentItem'
+import { CommentItem } from 'client/components/organisms/comment/CommentItem'
 import styles from 'client/styles/components/templates/comment/CommentList.module.scss'
+import { Comment } from 'domain/Comment'
 
 type Props = {
   comments: Comment[]

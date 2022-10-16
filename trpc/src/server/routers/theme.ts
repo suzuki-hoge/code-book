@@ -1,6 +1,6 @@
-import {z} from 'zod'
-import {createTheme, findThemeDetail, findThemeSummaries} from '../workflow/theme'
-import {serverTrpc} from 'server/server_trpc'
+import { z } from 'zod'
+import { serverTrpc } from 'server/server_trpc'
+import { createTheme, findThemeDetail, findThemeSummaries } from 'server/workflow/theme'
 
 export const themeRouter = serverTrpc.router({
   summaries: serverTrpc.procedure.query(() => {
@@ -15,12 +15,14 @@ export const themeRouter = serverTrpc.router({
       return findThemeDetail(request.input)
     }),
   create: serverTrpc.procedure
-    .input(z.object({
-      id: z.string(),
-      title: z.string(),
-      authorId: z.string()
-    }))
-    .mutation(async ({input}) => {
+    .input(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        authorId: z.string(),
+      }),
+    )
+    .mutation(async ({ input }) => {
       return createTheme(input.id, input.title, input.authorId)
     }),
 })

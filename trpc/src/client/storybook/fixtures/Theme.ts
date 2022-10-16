@@ -1,4 +1,4 @@
-import { markdownTextCommentFixture, plainTextCommentFixture } from './Comment'
+import { markdownTextCommentFixture, plainTextCommentFixture } from 'client/storybook/fixtures/Comment'
 import { userFixture } from 'client/storybook/fixtures/User'
 import { ThemeSummary } from 'domain/Theme'
 

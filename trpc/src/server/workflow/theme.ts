@@ -1,8 +1,7 @@
 import Database from 'better-sqlite3'
-import {format} from 'date-fns'
-import {ThemeDetail, ThemeSummary} from '../../domain/Theme'
-import {findCommentsByThemeId, findFirstCommentByThemeId} from './comments'
-
+import { format } from 'date-fns'
+import { ThemeDetail, ThemeSummary } from 'domain/Theme'
+import { findCommentsByThemeId, findFirstCommentByThemeId } from 'server/workflow/comments'
 
 const db = new Database('database/dev.db')
 
@@ -72,6 +71,10 @@ export function findThemeDetail(themeId: string): ThemeDetail {
 }
 
 export function createTheme(id: string, title: string, authorId: string): void {
-  db.prepare('insert into theme (id, title, created, author_id) values (?, ?, ?, ?)')
-    .run(id, title, format(new Date(), 'yyyy/MM/dd HH:mm'), authorId)
+  db.prepare('insert into theme (id, title, created, author_id) values (?, ?, ?, ?)').run(
+    id,
+    title,
+    format(new Date(), 'yyyy/MM/dd HH:mm'),
+    authorId,
+  )
 }

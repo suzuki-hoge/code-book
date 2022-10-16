@@ -1,5 +1,5 @@
 import Database from 'better-sqlite3'
-import { User } from '../../domain/User'
+import { User } from 'domain/User'
 
 const db = new Database('database/dev.db')
 

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { markdownTextCommentFixture } from '../../fixtures/Comment'
 import { MarkdownInput } from 'client/components/molecules/MarkdownInput'
+import { markdownTextCommentFixture } from 'client/storybook/fixtures/Comment'
 
 export default {
   title: 'Molecules/MarkdownInput',

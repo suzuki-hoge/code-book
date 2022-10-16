@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { markdownTextCommentFixture, plainTextCommentFixture } from '../../fixtures/Comment'
 import { MarkdownText } from 'client/components/atoms/MarkdownText'
+import { markdownTextCommentFixture, plainTextCommentFixture } from 'client/storybook/fixtures/Comment'
 
 export default {
   title: 'Atoms/MarkdownText',

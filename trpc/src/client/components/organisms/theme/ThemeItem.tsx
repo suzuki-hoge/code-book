@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { MarkdownText } from '../../atoms/MarkdownText'
-import { ThemeHeader } from './ThemeHeader'
+import { MarkdownText } from 'client/components/atoms/MarkdownText'
+import { ThemeHeader } from 'client/components/organisms/theme/ThemeHeader'
 import styles from 'client/styles/components/organisms/theme/ThemeItem.module.scss'
 import { ThemeSummary } from 'domain/Theme'
 

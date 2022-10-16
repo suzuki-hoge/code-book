@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { userFixture } from '../../fixtures/User'
 import { IconBalloon } from 'client/components/molecules/IconBalloon'
+import { userFixture } from 'client/storybook/fixtures/User'
 
 export default {
   title: 'Molecules/IconBalloon',

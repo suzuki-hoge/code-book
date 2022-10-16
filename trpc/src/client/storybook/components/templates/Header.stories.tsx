@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { userFixture } from '../../fixtures/User'
 import { Header } from 'client/components/templates/Header'
+import { userFixture } from 'client/storybook/fixtures/User'
 
 export default {
   title: 'Templates/Header',

@@ -23,6 +23,7 @@ lint:
 	@npm run lint
 
 format:
+	@python tool/replace-relative-import.py
 	@npm run format
 
 gen:

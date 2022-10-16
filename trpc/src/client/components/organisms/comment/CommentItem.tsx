@@ -1,9 +1,9 @@
 import { FC, useState } from 'react'
-import { CommentInput } from './CommentInput'
 import { DeleteIcon } from 'client/components/atoms/DeleteIcon'
 import { EditIcon } from 'client/components/atoms/EditIcon'
 import { MarkdownText } from 'client/components/atoms/MarkdownText'
 import { IconBalloon } from 'client/components/molecules/IconBalloon'
+import { CommentInput } from 'client/components/organisms/comment/CommentInput'
 import styles from 'client/styles/components/organisms/comment/CommentItem.module.scss'
 import { Comment } from 'domain/Comment'
 

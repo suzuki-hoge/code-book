@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react'
-import { ImageIcon } from '../atoms/ImageIcon'
-import { Balloon } from './Balloon'
+import { ImageIcon } from 'client/components/atoms/ImageIcon'
+import { Balloon } from 'client/components/molecules/Balloon'
 import styles from 'client/styles/components/molecules/IconBalloon.module.scss'
 
 type Props = {

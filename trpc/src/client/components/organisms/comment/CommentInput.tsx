@@ -1,13 +1,13 @@
-import {FC, useState} from 'react'
-import {v4 as uuidv4} from 'uuid';
-import {Button} from '../../atoms/Button'
-import {SelectLabel} from 'client/components/atoms/SelectLabel'
-import {SubmitButton} from 'client/components/atoms/SubmitButton'
-import {IconBalloon} from 'client/components/molecules/IconBalloon'
-import {MarkdownInput} from 'client/components/molecules/MarkdownInput'
+import { FC, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { clientTrpc } from 'client/client_trpc'
+import { Button } from 'client/components/atoms/Button'
+import { SelectLabel } from 'client/components/atoms/SelectLabel'
+import { SubmitButton } from 'client/components/atoms/SubmitButton'
+import { IconBalloon } from 'client/components/molecules/IconBalloon'
+import { MarkdownInput } from 'client/components/molecules/MarkdownInput'
 import styles from 'client/styles/components/organisms/comment/CommentInput.module.scss'
-import {User} from 'domain/User'
-import {clientTrpc} from "../../../client_trpc";
+import { User } from 'domain/User'
 
 type Props = {
   commentId: string
@@ -33,14 +33,14 @@ export const CommentInput: FC<Props> = (props) => {
   const create = () => {
     setEnabled(false)
     const id = uuidv4()
-    commentCreate.mutate({id: id, themeId: props.themeId, body: text, authorId: props.user.id})
+    commentCreate.mutate({ id: id, themeId: props.themeId, body: text, authorId: props.user.id })
     window.location.reload()
   }
 
   const commentUpdate = clientTrpc.comment.update.useMutation()
   const update = () => {
     setEnabled(false)
-    commentUpdate.mutate({id: props.commentId, body: text})
+    commentUpdate.mutate({ id: props.commentId, body: text })
     window.location.reload()
   }
 
@@ -48,16 +48,16 @@ export const CommentInput: FC<Props> = (props) => {
     <IconBalloon icon={props.user.icon}>
       <div className={styles.component}>
         <div className={styles.header}>
-          <SelectLabel value="Write" selected={writing} onClick={() => setWriting(true)}/>
-          <SelectLabel value="Preview" selected={!writing} onClick={() => setWriting(false)}/>
+          <SelectLabel value="Write" selected={writing} onClick={() => setWriting(true)} />
+          <SelectLabel value="Preview" selected={!writing} onClick={() => setWriting(false)} />
         </div>
-        <hr className={styles.sep}/>
+        <hr className={styles.sep} />
         <div className={styles.body}>
-          <MarkdownInput text={text} isWriting={writing} onChange={input}/>
+          <MarkdownInput text={text} isWriting={writing} onChange={input} />
           <div className={styles.buttons}>
-            {props.variant === 'create' && <SubmitButton value="Add Comment" enabled={enabled} onClick={create}/>}
-            {props.variant === 'update' && <Button value="Cancel" onClick={props.onCancel}/>}
-            {props.variant === 'update' && <SubmitButton value="Update Comment" enabled={enabled} onClick={update}/>}
+            {props.variant === 'create' && <SubmitButton value="Add Comment" enabled={enabled} onClick={create} />}
+            {props.variant === 'update' && <Button value="Cancel" onClick={props.onCancel} />}
+            {props.variant === 'update' && <SubmitButton value="Update Comment" enabled={enabled} onClick={update} />}
           </div>
         </div>
       </div>
